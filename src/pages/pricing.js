@@ -2,12 +2,12 @@ import React from 'react'
 
 import { Layout } from 'src/components'
 
-const Contact = () => {
+const Pricing = () => {
   return (
     <Layout>
-      contact me
+      my pricings
     </Layout>
   )
 }
 
-export default Contact
+export default Pricing

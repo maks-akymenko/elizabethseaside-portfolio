@@ -2,12 +2,12 @@ import React from 'react'
 
 import { Layout } from 'src/components'
 
-const Contact = () => {
+const About = () => {
   return (
     <Layout>
-      contact me
+      About page
     </Layout>
   )
 }
 
-export default Contact
+export default About

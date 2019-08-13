@@ -1,12 +1,13 @@
 import React from 'react'
 import { ThemeProvider } from 'styled-components'
 import Helmet from 'react-helmet'
-import favicon from '../images/favicon.ico'
-import GlobalStyle from '../styles/global'
-import theme from '../styles/theme'
-import config from '../utils/siteConfig'
-import Menu from '../components/Menu'
-import Footer from '../components/Footer'
+import favicon from 'src/images/favicon.ico'
+import { GlobalStyle, theme } from 'src/styles/global'
+import config from 'src/utils/siteConfig'
+
+import { Menu } from 'src/components'
+
+import { Container } from './Layout.styled'
 
 const Template = ({ children }) => {
   return (
@@ -20,14 +21,13 @@ const Template = ({ children }) => {
 
       <ThemeProvider theme={theme}>
         <>
-          <div className="siteContent">
-            <Menu />
+          <GlobalStyle />
+          <Menu />
+          <Container>
             {children}
-          </div>
-          <Footer />
+          </Container>
         </>
       </ThemeProvider>
-      <GlobalStyle />
     </div>
   )
 }

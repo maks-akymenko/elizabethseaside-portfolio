@@ -1,4 +1,6 @@
 const config = require('./src/utils/siteConfig')
+const path = require('path')
+
 let contentfulConfig
 
 try {
@@ -65,6 +67,7 @@ module.exports = {
         process.env.NODE_ENV === 'development'
           ? contentfulConfig.development
           : contentfulConfig.production,
+      downloadLocal: true,
     },
     {
       resolve: 'gatsby-plugin-google-analytics',
@@ -163,5 +166,8 @@ module.exports = {
       },
     },
     'gatsby-plugin-netlify',
+    'gatsby-plugin-root-import',
+    'gatsby-transformer-sharp',
+    'gatsby-plugin-sharp',
   ],
 }
