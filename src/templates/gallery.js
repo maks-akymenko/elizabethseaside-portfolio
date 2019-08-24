@@ -3,8 +3,8 @@ import { graphql } from 'gatsby'
 import Img from 'gatsby-image'
 import Carousel, { Modal, ModalGateway } from 'react-images'
 import Masonry from 'react-masonry-component';
-import { Layout } from 'src/components'
-import { Block, Heading } from './gallery.styled'
+import { BackButton, Layout } from 'src/components'
+import { Heading, ImageBlock } from './gallery.styled'
 
 
 const GalleryTemplate = ({ data: { contentfulImageGallery } }) => {
@@ -23,12 +23,13 @@ const GalleryTemplate = ({ data: { contentfulImageGallery } }) => {
 
   return (
     <Layout>
+      <BackButton />
       <Heading>{contentfulImageGallery.title}</Heading>
       <Masonry options={masonryOptions} style={{ margin: '0 auto' }}>
         {contentfulImageGallery.gallery.map((image, index) => (
-          <div key={image.fixed.src + Math.random()} onClick={() => openModal(index)}>
+          <ImageBlock key={image.fixed.src + Math.random()} onClick={() => openModal(index)}>
             <Img key={image.fixed.src} fixed={image.fixed} />
-          </div>
+          </ImageBlock>
         ))}
       </Masonry>
       {ModalGateway && (
@@ -81,7 +82,6 @@ export const query = graphql`
       gallery {
         fixed(width: 300, quality: 95) {
           ...GatsbyContentfulFixed
-          src
         }
         fluid {
           ...GatsbyContentfulFluid

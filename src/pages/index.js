@@ -14,7 +14,9 @@ const index = ({ data: { allContentfulTypes: { edges } } }) => {
         {edges.map(({ node }) => (
           node.photoshootType && (
             <PhotoshootType key={node.id} to={`/${node.slug}`}>
-              <Img fluid={node.backgroundPhoto.fluid} />
+              <Img fluid={node.backgroundPhoto.fluid} imgStyle={{
+                transition: 'all 0.3s linear',
+              }} />
               <PhotoshootTitle>{node.photoshootType}</PhotoshootTitle>
             </PhotoshootType>
           )
@@ -30,8 +32,8 @@ export const query = graphql`
     edges {
       node {
         backgroundPhoto {
-          fluid(maxWidth: 1600, maxHeight: 1600) {
-            ...GatsbyContentfulFluid
+          fluid(quality: 100, maxWidth: 600, maxHeight: 600) {
+            ...GatsbyContentfulFluid_withWebp
           }
         }
         photoshootType

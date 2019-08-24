@@ -42,6 +42,21 @@ module.exports = {
     'gatsby-plugin-styled-components',
     'gatsby-plugin-react-helmet',
     {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'images',
+        path: `${__dirname}/src/images/`,
+      },
+    },
+    {
+      resolve: `gatsby-source-instagram`,
+      options: {
+        username: `elizabethseaside_photography`,
+        access_token: process.env.ACCESS_TOKEN,
+        instagram_id: process.env.CLIENT_ID,
+      },
+    },
+    {
       resolve: `gatsby-transformer-remark`,
       options: {
         plugins: [

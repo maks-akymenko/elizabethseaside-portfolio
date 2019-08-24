@@ -1,26 +1,33 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'gatsby'
 
-import { Logo, Sidebar } from './Menu.styled'
+import { Burger, Logo, NavContainer, Sidebar } from './Menu.styled'
+import { Footer } from 'src/components'
 
 const Menu = () => {
-  const today = new Date();
+  const [open, setOpen] = useState(false)
+
   return (
-    <Sidebar>
-      <Logo to="/">
-        Elizabethseaside
+    <Sidebar showMenu={open}>
+      <NavContainer>
+        <Logo to="/">
+          Elizabethseaside
         <small>photography</small>
-      </Logo>
-      <nav>
-        <Link to="/about">About</Link>
-        <Link to="/pricing">Pricing</Link>
-        <Link to="/contact">Contact</Link>
-      </nav>
-      <footer>
-        <div>© {today.getFullYear()}</div>
-        <div>Author and creator: <a target="_blank" rel="nooperner noreferrer" href="https://www.github.com">Maks Akymenko</a></div>
-      </footer>
-    </Sidebar>
+        </Logo>
+        <Burger showMenu={open} onClick={() => setOpen(!open)}>
+          <div />
+          <div />
+          <div />
+        </Burger>
+        <nav>
+          <Link to="/" activeClassName="active">Portfolio</Link>
+          <Link to="/about" activeClassName="active">About</Link>
+          <Link to="/instagram" activeClassName="active">Instagram</Link>
+          <Link to="/contact" activeClassName="active">Contact</Link>
+        </nav>
+      </NavContainer>
+      <Footer hideOnMobile />
+    </Sidebar >
   )
 }
 

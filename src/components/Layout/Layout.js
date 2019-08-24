@@ -5,7 +5,7 @@ import favicon from 'src/images/favicon.ico'
 import { GlobalStyle, theme } from 'src/styles/global'
 import config from 'src/utils/siteConfig'
 
-import { Menu } from 'src/components'
+import { Footer, Menu } from 'src/components'
 
 import { Container } from './Layout.styled'
 
@@ -25,6 +25,7 @@ const Template = ({ children }) => {
           <Menu />
           <Container>
             {children}
+            <Footer hideOnDesktop />
           </Container>
         </>
       </ThemeProvider>
@@ -33,3 +34,4 @@ const Template = ({ children }) => {
 }
 
 export default Template
+
